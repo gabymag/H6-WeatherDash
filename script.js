@@ -14,7 +14,34 @@ function searchWeather(searchCity) {
       method: "GET"
     }).then(function(response) {
       console.log(response);
-    
+
+
+    //   var iconcode = a.weather[0].icon;
+    //   var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+    // var todaysDate = moment.unix(response.dt).format("MM/DD/YYYY | h:mm a");
+    // var todayDate = moment();
+
+        $("#city").html("<h1>" + response.name + " Weather Today</h1>");
+        // $("#WeatherIcon").html(+ response.weather[0].icon);
+       $("#WeatherIcon").attr("<img src>", response.weather[0][1]);
+        $("#currentDate").html(moment().format( "MMMM Do"));
+        
+
+    //    $('<img>').attr('src',response.Poster);
+
+        // $("#main_weather").html(json.weather[0].main);
+        // $("#description_weather").html(json.weather[0].description);
+        // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
+        // $("#temperature").html(json.main.temp);
+        // $("#pressure").html(json.main.pressure);
+        // $("#humidity").html(json.main.humidity);
+   
+
+
+
+
+
+
 
 
     
