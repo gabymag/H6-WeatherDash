@@ -1,5 +1,7 @@
 var apiKey = '9016d79680b228468f8bc62eaad01307';
 var baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
+var fiveDayUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=';
+
 
 // var queryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + apiKey + searchCity;
 
@@ -10,6 +12,7 @@ var searchCity = $("#searchCity").val();
 //querying the openweathermap API for weather data in the city that is being searched
 function searchWeather(searchCity) {
     var queryUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "&APPID=" + apiKey;
+
     $.ajax({
       url: queryUrl,
       method: "GET"
@@ -22,29 +25,12 @@ function searchWeather(searchCity) {
         // $("#WeatherIcon").html(+ response.weather[0].icon);
         $("#WeatherIcon").attr("src", currentWeatherImg);
         $("#currentDate").html(moment().format( "MMMM Do"));
-        $("#currentTempurature").html("<h3>Tempurature: " + 
+        $("#currentTempurature").html("<h3>" + 
         ((response.main.temp -273.15) * 1.80 +32 + " &degF</h3>"));
         $("#currentHumidity").html("<p>Humidity: " + response.main.humidity + "%</p>");
         $("#WindSpeed").html("<p>Wind Speed: " + response.wind.speed + "</p>");
-   
-
-        // $("#main_weather").html(json.weather[0].main);
-        // $("#description_weather").html(json.weather[0].description);
-        // $("#weather_image").attr("src", "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png");
-        // $("#temperature").html(json.main.temp);
-        // $("#pressure").html(json.main.pressure);
-        // $("#humidity").html(json.main.humidity);
-   
-
-        
-
-
-
-
-    
     });
   }
-
 
   //event handler for search for city button
   $("#queryBtn").on("click", function(event) {
@@ -54,3 +40,20 @@ function searchWeather(searchCity) {
   });
 
 
+  function getForecast(searchCity) {
+    //get 5 day forecast
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&APPID=" + apiKey;
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log('5response :', response);
+      
+
+
+        }
+    )};
+
+
+
+ 
