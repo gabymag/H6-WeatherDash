@@ -26,7 +26,7 @@ function searchWeather(searchCity) {
         $("#WeatherIcon").attr("src", currentWeatherImg);
         $("#currentDate").html(moment().format( "MMMM Do"));
         $("#currentTempurature").html("<h3>" + 
-        ((response.main.temp -273.15) * 1.80 +32 + " &degF</h3>"));
+        (Math.round ((response.main.temp -273.15) * 1.80 +32 )+ " &degF</h3>"));
         $("#currentHumidity").html("<p>Humidity: " + response.main.humidity + "%</p>");
         $("#WindSpeed").html("<p>Wind Speed: " + response.wind.speed + "</p>");
     });
@@ -44,6 +44,7 @@ function searchWeather(searchCity) {
     //get 5 day forecast
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + searchCity + "&APPID=" + apiKey;
     $.ajax({
+        
         url: queryURL,
         method: "GET"
     }).then(function (response) {
