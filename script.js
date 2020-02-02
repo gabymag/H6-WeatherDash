@@ -1,5 +1,6 @@
 var apiKey = '9016d79680b228468f8bc62eaad01307';
 var baseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
+
 // var queryUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + apiKey + searchCity;
 
 var searchCity = $("#searchCity").val();
@@ -15,19 +16,17 @@ function searchWeather(searchCity) {
     }).then(function(response) {
       console.log(response);
 
-
-    //   var iconcode = a.weather[0].icon;
-    //   var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-    // var todaysDate = moment.unix(response.dt).format("MM/DD/YYYY | h:mm a");
-    // var todayDate = moment();
+      var currentWeatherImg = "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png";
 
         $("#city").html("<h1>" + response.name + " Weather Today</h1>");
         // $("#WeatherIcon").html(+ response.weather[0].icon);
-       $("#WeatherIcon").attr("<img src>", response.weather[0][1]);
+        $("#WeatherIcon").attr("src", currentWeatherImg);
         $("#currentDate").html(moment().format( "MMMM Do"));
-        
-
-    //    $('<img>').attr('src',response.Poster);
+        $("#currentTempurature").html("<h3>Tempurature: " + 
+        ((response.main.temp -273.15) * 1.80 +32 + " &degF</h3>"));
+        $("#currentHumidity").html("<p>Humidity: " + response.main.humidity + "%</p>");
+        $("#WindSpeed").html("<p>Wind Speed: " + response.wind.speed + "</p>");
+   
 
         // $("#main_weather").html(json.weather[0].main);
         // $("#description_weather").html(json.weather[0].description);
@@ -37,9 +36,7 @@ function searchWeather(searchCity) {
         // $("#humidity").html(json.main.humidity);
    
 
-
-
-
+        
 
 
 
