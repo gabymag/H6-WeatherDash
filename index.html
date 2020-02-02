@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Heading Bar-->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark justify-content-center">
     <span class="navbar-brand mb-0 h1" id="header-text"  >Weather Dashboard</span>
   </nav>
   <!-- container start -->
@@ -25,20 +25,44 @@
           <p>Search for a City:</p>
           <!-- Search form -->
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <div class="input-group-append">
-              <button class="btn btn-secondary" type="button">
-                <i class="fa fa-search"></i>
+            <input type="text" id = "searchCity" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+              <button class="query-btn btn btn-secondary" id= "queryBtn" type="button">
+              
               </button>
+              <br>
+            
+              
             </div>
-        </div>
-
+           
+            </div>
+            <ul class="list-group" id="searchHistory"> search history goes here
+            </ul>
           
         </div>
+
+        <!-- Row 1 column 2 , column two has two rows -->
+        <!--Current weather will go here-->
         <div class="col-sm-8">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dolorum perferendis voluptates error ullam placeat repellendus. Repellendus error repellat veritatis recusandae voluptates earum rerum consectetur itaque, ipsam nihil. Alias, nemo.</p>
+            <div class="card">
+                <div class="current-weather-body">
+                    <h4 class="card-title m-0" id="city"> City: </h4>
+                    <img src="" alt="Current Weather Image" id="currentWeatherImage"/>
+                    <h5 class="card-subtitle mb-2" id="currentDateAndTime">Date: </h5>
+                    <p class="card-text" id="currentTempurature">Tempurature: </p>
+                    <p class="card-text" id="currentHumidity">Humidity: </p>
+                    <p class="card-text" id="currentWindSpeed">Wind Speed: </p>
+                    <p class="card-text" id="currentUVIndex">UV Index:</p>
+                </div>
+            </div>
           <div class="col-sm-12">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti illo voluptates blanditiis nisi! Ullam dolore aspernatur, ratione error similique veniam iusto, labore repellat eaque nostrum optio doloribus illo nihil dolor?</p>
+            <div class="row mx-2">
+                <h3 class="ml-3">5-Day Forecast:</h3>
+            </div>
+
+            <!-- Five day forecast goes here -->
+            <div class="row mx-2" id="forecast">
+            </div>
           </div>
         </div>
       </div>
@@ -47,14 +71,19 @@
 
 </div>
     
-
+<footer>
+    <div class="footer">
+    </div>
+  </footer>
 
     
     
  
 <!-- js links -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.js"
+			  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+			  crossorigin="anonymous"></script>
      <script src="script.js"></script>
 </body>
 </html>
