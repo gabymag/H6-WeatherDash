@@ -27,8 +27,29 @@ function searchWeather(searchCity) {
         (Math.round ((response.main.temp -273.15) * 1.80 +32 )+ " &degF</h3>"));
         $("#currentHumidity").html("<p>Humidity: " + response.main.humidity + "%</p>");
         $("#WindSpeed").html("<p>Wind Speed: " + response.wind.speed + "</p>");
+
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi?appid=7e4c7478cc7ee1e11440bf55a8358ec3&lat=" + response.coord.lat + "&lon=" + response.coord.lat;
+        $.ajax({
+            url: uvURL,
+            method: "GET"
+        }).then(function (uvresponse) {
+            var uvindex = uvresponse.value;
+            console.log('uvindex :', uvindex);
+            $("#UVIndex").html("<p> UV Index: " + uvindex + "</p>");
+            
+        });
+
+
+
     });
+
+
+    
   }
+
+
+
+
 
   function getForecast(searchCity) {
     //get 5 day forecast
