@@ -104,17 +104,28 @@ function searchWeather(searchCity) {
     getForecast(inputCity);
     renderRecentSearch();
 
+
+    ///The mess below & party above represents my attempt at trying to get the previous city to display under the search bar.
     function renderRecentSearch(){
     // var searchedCity = localStorage.getItem("#searchCity");
     // var searchHistory = $("#searchHistory").val();
-    
     localStorage.getItem("#searchHistory", inputCity);
     localStorage.setItem("#searchHistory", inputCity);
-    $("#searchHistory").html(localStorage.getItem("#searchHistory"));
-    
+    // $("#searchHistory").html(localStorage.getItem("#searchHistory"));
+    // var recentSearch = (localStorage.getItem("#searchHistory"));
+    // listCity = $("<li>");
+    prevCity = $("#previousCity");
+    $("#searchHistory").append(prevCity);
     console.log('Gabys console log :', localStorage);
-    
-    console.log(localStorage.getItem("#searchHistory"))
+    console.log(localStorage.getItem("#searchHistory"));
+    var SearchHistory = (localStorage.getItem("#searchHistory"));
+      prevCity.attr("class", "list-group-item");
+      prevCity.text(SearchHistory);
+      $("#searchHistory").append(prevCity);
+
+      console.log(SearchHistory)
+  
+
  }});
 
 
