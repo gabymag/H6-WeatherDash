@@ -90,14 +90,34 @@ function searchWeather(searchCity) {
 
 
 
+    function renderRecentSearch() {
+     
+    
+    }
+
+
  //event handler for search for city button for both the one day and 5 day forecast
  $("#queryBtn").on("click", function(event) {
     event.preventDefault();
    var inputCity = $("#searchCity").val().trim();
     searchWeather(inputCity);
     getForecast(inputCity);
+    renderRecentSearch();
 
-  });
+    function renderRecentSearch(){
+    // var searchedCity = localStorage.getItem("#searchCity");
+    // var searchHistory = $("#searchHistory").val();
+    
+    localStorage.getItem("#searchHistory", inputCity);
+    localStorage.setItem("#searchHistory", inputCity);
+    
+    
+    console.log(localStorage);
+ }});
+
+
+
+
 
 
  
