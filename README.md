@@ -31,4 +31,4 @@ so that I can plan a trip accordingly
 
 
 
-<img src="assets/weatherdash.png">
+<img src="Assets/weatherdash.png">
