@@ -110,9 +110,11 @@ function searchWeather(searchCity) {
     
     localStorage.getItem("#searchHistory", inputCity);
     localStorage.setItem("#searchHistory", inputCity);
+    $("#searchHistory").html(localStorage.getItem("#searchHistory"));
     
+    console.log('Gabys console log :', localStorage);
     
-    console.log(localStorage);
+    console.log(localStorage.getItem("#searchHistory"))
  }});
 
 
