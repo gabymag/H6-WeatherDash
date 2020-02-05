@@ -145,13 +145,13 @@ function searchWeather(searchCity) {
     console.log(localStorage.getItem("#searchHistory"));
     // var SearchHistory = (localStorage.getItem("#searchHistory"));
 
-            // Clears entire search history
-            $("#searchHistory").empty();
+     // Clears search history
+      $("#searchHistory").empty();
     
-            //only 5 search history results displayed
-            while (storageArray.length > 5){
-                storageArray.splice(-1,1);
-            }
+      //only 5 search history results displayed
+      while (storageArray.length > 5){
+      storageArray.splice(-1);
+      }
 //loop for the storage array of search results
     for (i=0; i<storageArray.length; i++){
       console.log(storageArray[i]);
