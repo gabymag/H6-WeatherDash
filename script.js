@@ -126,12 +126,16 @@ function searchWeather(searchCity) {
     renderRecentSearch();
 
 
-    ///The mess below & party above represents my attempt at trying to get the previous city to display under the search bar.
+    ///The mess below & party above represents my attempt at trying to get the previous city to display under the search bar. Justin helped me in the end but it could probably still be a lot cleaner
     function renderRecentSearch(){
     // var searchedCity = localStorage.getItem("#searchCity");
     // var searchHistory = $("#searchHistory").val();
-    localStorage.getItem("#searchHistory", inputCity);
-    localStorage.setItem("#searchHistory", inputCity);
+    var currentStorage = localStorage.getItem("#searchHistory");
+    var storageArray = JSON.parse(currentStorage) || []; //or empty array
+    console.log(storageArray);
+    storageArray.push(inputCity);
+    console.log(storageArray);
+    localStorage.setItem("#searchHistory", JSON.stringify(storageArray));
     // $("#searchHistory").html(localStorage.getItem("#searchHistory"));
     // var recentSearch = (localStorage.getItem("#searchHistory"));
     // listCity = $("<li>");
@@ -139,12 +143,29 @@ function searchWeather(searchCity) {
     $("#searchHistory").append(prevCity);
     console.log('Gabys console log :', localStorage);
     console.log(localStorage.getItem("#searchHistory"));
-    var SearchHistory = (localStorage.getItem("#searchHistory"));
-      prevCity.attr("class", "list-group-item");
-      prevCity.text(SearchHistory);
-      $("#searchHistory").append(prevCity);
+    // var SearchHistory = (localStorage.getItem("#searchHistory"));
 
-      console.log(SearchHistory)
+            // Clears entire search history
+            $("#searchHistory").empty();
+    
+            //only 5 search history results displayed
+            while (storageArray.length > 5){
+                storageArray.splice(-1,1);
+            }
+//loop for the storage array of search results
+    for (i=0; i<storageArray.length; i++){
+      console.log(storageArray[i]);
+      var listItem = $("<li>")
+      listItem.text(storageArray[i]);
+      $("#searchHistory").append(listItem);
+      
+    }  
+
+    
+    // prevCity.attr("class", "list-group-item");
+    //   prevCity.text(storageArray); 
+    //   $("#searchHistory").append(prevCity);
+      // console.log(SearchHistory)
   
 
  }});
